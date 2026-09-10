@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>はっぱとリボン | 生物のたのしい勉強ノート</title>
+<title>せいぶつピクニック | 生物のたのしい勉強ノート</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
@@ -331,7 +331,7 @@
 <body>
 
 <header>
-  <div class="brand"><span class="leaf-dot"></span>はっぱとリボン</div>
+  <div class="brand"><span class="leaf-dot"></span>せいぶつピクニック</div>
   <nav>
     <a href="index.html" class="current">トップ</a>
     <a href="blog.html">日記</a>
@@ -343,8 +343,8 @@
 <section class="hero">
   <div class="hero-copy">
     <span class="eyebrow-line">生物、はじめました</span>
-    <h1>むずかしそうな生物を、<br><span class="accent-underline">葉っぱとリボンの色</span>で<br>ちょっとずつ好きになる。</h1>
-    <p>細胞のしくみから生き物のふしぎまで、勉強しながら見つけたことを漫画やイラストと一緒にまとめていくノートです。むずかしい言葉より先に、おもしろいと思った気持ちを大事にしています。</p>
+    <h1>むずかしそうな生物を、<br><span class="accent-underline">みどりとピンクの色</span>で<br>ちょっとずつ好きになる。</h1>
+    <p>細胞のしくみから動物・植物・微生物のふしぎまで、勉強しながら見つけたことを漫画やイラストと一緒にまとめていくノートです。むずかしい言葉より先に、おもしろいと思った気持ちを大事にしています。</p>
     <div class="hero-buttons">
       <a href="blog.html" class="btn btn-solid">勉強日記を見る</a>
       <a href="column.html" class="btn btn-outline">コラム＆イラスト</a>
@@ -353,14 +353,24 @@
   <div class="hero-art">
     <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
       <ellipse cx="200" cy="215" rx="170" ry="160" fill="var(--green-pale)"/>
-      <path d="M200 90 C260 100 300 150 290 210 C282 258 240 290 200 290 C160 290 118 258 110 210 C100 150 140 100 200 90 Z" fill="var(--green-main)"/>
-      <path d="M200 120 C200 170 200 220 200 270" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
-      <path d="M200 150 L165 130 M200 190 L235 172 M200 230 L168 214" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+      <!-- 細胞っぽい丸みのあるブロブ -->
+      <path d="M200 95 C270 95 305 150 300 205 C296 260 250 295 200 295 C150 295 104 260 100 205 C95 150 130 95 200 95 Z" fill="var(--green-main)"/>
+      <!-- 内側にDNAの二重らせん -->
+      <path d="M160 130 C180 150 180 170 160 190 C140 210 140 230 160 250" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.6"/>
+      <path d="M240 130 C220 150 220 170 240 190 C260 210 260 230 240 250" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.6"/>
+      <path d="M165 140 L235 140 M158 190 L242 190 M165 240 L235 240" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
+      <!-- 微生物っぽい丸 -->
       <circle cx="300" cy="120" r="46" fill="var(--pink-main)"/>
       <circle cx="285" cy="106" r="8" fill="#fff" opacity="0.5"/>
-      <circle cx="95" cy="305" r="34" fill="var(--pink-deep)"/>
-      <circle cx="70" cy="120" r="16" fill="var(--pink-pale)"/>
       <circle cx="330" cy="300" r="20" fill="var(--green-deep)" opacity="0.85"/>
+      <circle cx="70" cy="120" r="16" fill="var(--pink-pale)"/>
+      <!-- 肉球(動物モチーフ) -->
+      <g transform="translate(70,292)">
+        <ellipse cx="0" cy="12" rx="17" ry="13" fill="var(--pink-deep)"/>
+        <circle cx="-15" cy="-8" r="7" fill="var(--pink-deep)"/>
+        <circle cx="0" cy="-15" r="7" fill="var(--pink-deep)"/>
+        <circle cx="15" cy="-8" r="7" fill="var(--pink-deep)"/>
+      </g>
     </svg>
   </div>
 </section>
@@ -372,7 +382,7 @@
 
 <section class="contents">
   <div class="card">
-    <div class="icon">🌱</div>
+    <div class="icon">🔬</div>
     <h3>勉強日記</h3>
     <p>日付と一言だけのシンプルな記録。今日どこまで進んだか、何につまずいたかをつぶやくように残しています。</p>
     <a href="blog.html" class="go">日記を読む →</a>
@@ -384,7 +394,7 @@
     <a href="column.html" class="go">コラムを見る →</a>
   </div>
   <div class="card">
-    <div class="icon">🍃</div>
+    <div class="icon">🐾</div>
     <h3>このサイトについて</h3>
     <p>サイトを作った理由や、生物を勉強し始めたきっかけなど、自己紹介にあたるページです。</p>
     <a href="about.html" class="go">自己紹介を読む →</a>
