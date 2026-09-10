@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>はっぱとリボン | 生物のたのしい勉強ノート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green-deep:#2F6E4F;
+    --green-main:#7CC576;
+    --green-pale:#E4F5DC;
+    --pink-main:#FF7FAA;
+    --pink-deep:#E85C8C;
+    --pink-pale:#FFE3ED;
+    --cream:#FFFBF3;
+    --ink:#33473C;
+    --radius-lg:32px;
+    --radius-sm:18px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Zen Maru Gothic', sans-serif;
+    line-height:1.9;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.brand{
+    font-family:'Mochiy Pop One', sans-serif;
+    font-weight:400;
+    color:var(--green-deep);
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 6vw;
+    background:rgba(255,251,243,0.9);
+    backdrop-filter:blur(6px);
+    border-bottom:3px dashed var(--green-main);
+  }
+  .brand{
+    font-size:1.25rem;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .brand .leaf-dot{
+    width:14px;height:14px;
+    background:var(--pink-main);
+    border-radius:60% 40% 55% 45% / 45% 55% 40% 60%;
+  }
+  nav{display:flex;gap:clamp(12px,3vw,32px);font-size:0.95rem;}
+  nav a{
+    padding:6px 4px;
+    border-bottom:3px solid transparent;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  nav a:hover, nav a.current{
+    border-color:var(--pink-main);
+    color:var(--pink-deep);
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    align-items:center;
+    gap:40px;
+    padding:70px 6vw 90px;
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .hero-copy .eyebrow-line{
+    display:inline-block;
+    background:var(--pink-pale);
+    color:var(--pink-deep);
+    padding:6px 18px;
+    border-radius:999px;
+    font-size:0.85rem;
+    margin-bottom:18px;
+  }
+  .hero-copy h1{
+    font-size:clamp(2rem,4.4vw,3.1rem);
+    line-height:1.5;
+    margin:0 0 22px;
+  }
+  .hero-copy h1 .accent-underline{
+    position:relative;
+    display:inline-block;
+  }
+  .hero-copy h1 .accent-underline::after{
+    content:"";
+    position:absolute;
+    left:-2%;right:-2%;bottom:0.06em;
+    height:0.42em;
+    background:var(--green-main);
+    opacity:0.45;
+    z-index:-1;
+    border-radius:6px;
+  }
+  .hero-copy p{
+    font-size:1.02rem;
+    max-width:44ch;
+    color:#4b5f52;
+  }
+  .hero-buttons{
+    margin-top:30px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-block;
+    padding:14px 30px;
+    border-radius:999px;
+    font-size:0.95rem;
+    font-weight:700;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn-solid{
+    background:var(--pink-main);
+    color:#fff;
+    box-shadow:0 8px 0 var(--pink-deep);
+  }
+  .btn-outline{
+    background:transparent;
+    color:var(--green-deep);
+    border:2.5px solid var(--green-main);
+  }
+  .btn:hover{transform:translateY(-3px);}
+  .btn-solid:hover{box-shadow:0 11px 0 var(--pink-deep);}
+
+  .hero-art{
+    position:relative;
+    aspect-ratio:1/1;
+  }
+  .blob{
+    position:absolute;
+    border-radius:58% 42% 65% 35% / 45% 55% 45% 55%;
+  }
+  .blob.b1{
+    inset:6% 8% 10% 6%;
+    background:var(--green-pale);
+  }
+  .blob.b2{
+    width:40%;height:40%;
+    top:2%;right:6%;
+    background:var(--pink-pale);
+    border-radius:50% 50% 40% 60% / 60% 40% 60% 40%;
+  }
+
+  /* ---------- intro ---------- */
+  .intro{
+    max-width:760px;
+    margin:0 auto;
+    padding:20px 6vw 80px;
+    text-align:center;
+  }
+  .intro h2{
+    font-size:1.5rem;
+    margin-bottom:20px;
+  }
+  .intro p{
+    color:#4b5f52;
+  }
+
+  /* ---------- content cards ---------- */
+  .contents{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 6vw 100px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+  }
+  .card{
+    background:#fff;
+    border-radius:var(--radius-lg);
+    padding:34px 28px;
+    border:3px solid var(--green-pale);
+    position:relative;
+    transition:transform .2s ease, border-color .2s ease;
+  }
+  .card:hover{
+    transform:translateY(-6px);
+    border-color:var(--pink-main);
+  }
+  .card .icon{
+    width:56px;height:56px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:20px;
+    font-size:1.6rem;
+  }
+  .card:nth-child(1) .icon{background:var(--pink-pale);}
+  .card:nth-child(2) .icon{background:var(--green-pale);}
+  .card:nth-child(3) .icon{background:var(--pink-pale);}
+  .card h3{
+    font-size:1.15rem;
+    margin:0 0 12px;
+  }
+  .card p{
+    color:#5a6d5f;
+    font-size:0.95rem;
+    margin:0 0 22px;
+  }
+  .card .go{
+    font-size:0.9rem;
+    font-weight:700;
+    color:var(--pink-deep);
+  }
+
+  /* ---------- highlight strip ---------- */
+  .highlight{
+    background:var(--green-deep);
+    color:#fff;
+    padding:60px 6vw;
+  }
+  .highlight-inner{
+    max-width:1000px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+  }
+  .highlight h2{
+    color:#fff;
+    font-size:1.4rem;
+    margin-bottom:16px;
+  }
+  .highlight p{
+    color:#d9ecdf;
+    font-size:0.96rem;
+  }
+  .fact-card{
+    background:rgba(255,255,255,0.08);
+    border:2px dashed rgba(255,255,255,0.4);
+    border-radius:var(--radius-sm);
+    padding:26px;
+  }
+  .fact-card .tag{
+    display:inline-block;
+    background:var(--pink-main);
+    padding:4px 14px;
+    border-radius:999px;
+    font-size:0.8rem;
+    margin-bottom:14px;
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    padding:70px 6vw 40px;
+    max-width:1000px;
+    margin:0 auto;
+  }
+  .contact-block h2{
+    font-size:1.25rem;
+    margin-bottom:18px;
+  }
+  form.contact-form{
+    display:grid;
+    gap:14px;
+    max-width:520px;
+  }
+  form.contact-form input,
+  form.contact-form textarea{
+    font-family:'Zen Maru Gothic', sans-serif;
+    padding:13px 16px;
+    border-radius:var(--radius-sm);
+    border:2px solid var(--green-pale);
+    background:#fff;
+    font-size:0.95rem;
+    resize:vertical;
+  }
+  form.contact-form input:focus,
+  form.contact-form textarea:focus{
+    outline:none;
+    border-color:var(--pink-main);
+  }
+  form.contact-form button{
+    justify-self:start;
+    border:none;
+    cursor:pointer;
+    font-family:inherit;
+  }
+
+  .footer-meta{
+    margin-top:56px;
+    padding-top:28px;
+    border-top:2px dashed var(--green-pale);
+    font-size:0.82rem;
+    color:#6d8074;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 24px;
+    justify-content:space-between;
+  }
+  .footer-meta a{
+    color:var(--green-deep);
+    font-weight:700;
+  }
+
+  @media (max-width:820px){
+    .hero{grid-template-columns:1fr;padding-top:40px;}
+    .hero-art{order:-1;max-width:280px;margin:0 auto;}
+    .contents{grid-template-columns:1fr;}
+    .highlight-inner{grid-template-columns:1fr;}
+    nav{display:none;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .btn,.card{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand"><span class="leaf-dot"></span>はっぱとリボン</div>
+  <nav>
+    <a href="index.html" class="current">トップ</a>
+    <a href="blog.html">日記</a>
+    <a href="column.html">コラム</a>
+    <a href="about.html">このサイトについて</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow-line">生物、はじめました</span>
+    <h1>むずかしそうな生物を、<br><span class="accent-underline">葉っぱとリボンの色</span>で<br>ちょっとずつ好きになる。</h1>
+    <p>細胞のしくみから生き物のふしぎまで、勉強しながら見つけたことを漫画やイラストと一緒にまとめていくノートです。むずかしい言葉より先に、おもしろいと思った気持ちを大事にしています。</p>
+    <div class="hero-buttons">
+      <a href="blog.html" class="btn btn-solid">勉強日記を見る</a>
+      <a href="column.html" class="btn btn-outline">コラム＆イラスト</a>
+    </div>
+  </div>
+  <div class="hero-art">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="200" cy="215" rx="170" ry="160" fill="var(--green-pale)"/>
+      <path d="M200 90 C260 100 300 150 290 210 C282 258 240 290 200 290 C160 290 118 258 110 210 C100 150 140 100 200 90 Z" fill="var(--green-main)"/>
+      <path d="M200 120 C200 170 200 220 200 270" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+      <path d="M200 150 L165 130 M200 190 L235 172 M200 230 L168 214" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+      <circle cx="300" cy="120" r="46" fill="var(--pink-main)"/>
+      <circle cx="285" cy="106" r="8" fill="#fff" opacity="0.5"/>
+      <circle cx="95" cy="305" r="34" fill="var(--pink-deep)"/>
+      <circle cx="70" cy="120" r="16" fill="var(--pink-pale)"/>
+      <circle cx="330" cy="300" r="20" fill="var(--green-deep)" opacity="0.85"/>
+    </svg>
+  </div>
+</section>
+
+<section class="intro">
+  <h2>このノートについて</h2>
+  <p>生物の勉強を続けるために作った学習記録サイトです。図鑑みたいにきちんとまとめるより、その日わかったこと・つまずいたことをそのまま残すことを目標にしています。理科が得意な人にも、これから興味を持つ人にも、なるべく身近に感じてもらえたらうれしいです。</p>
+</section>
+
+<section class="contents">
+  <div class="card">
+    <div class="icon">🌱</div>
+    <h3>勉強日記</h3>
+    <p>日付と一言だけのシンプルな記録。今日どこまで進んだか、何につまずいたかをつぶやくように残しています。</p>
+    <a href="blog.html" class="go">日記を読む →</a>
+  </div>
+  <div class="card">
+    <div class="icon">🎀</div>
+    <h3>コラム＆イラスト</h3>
+    <p>生き物や体のしくみをテーマにした四コマ漫画やイラスト、ちょっと読み応えのある小さな読み物を置いています。</p>
+    <a href="column.html" class="go">コラムを見る →</a>
+  </div>
+  <div class="card">
+    <div class="icon">🍃</div>
+    <h3>このサイトについて</h3>
+    <p>サイトを作った理由や、生物を勉強し始めたきっかけなど、自己紹介にあたるページです。</p>
+    <a href="about.html" class="go">自己紹介を読む →</a>
+  </div>
+</section>
+
+<section class="highlight">
+  <div class="highlight-inner">
+    <div>
+      <h2>ノートを続けるモットー</h2>
+      <p>完璧にまとめようとすると手が止まってしまうので、わからないことも「わからない」と書いたまま残しています。あとで見返したときに、成長がわかる記録になればいいなと思っています。</p>
+    </div>
+    <div class="fact-card">
+      <span class="tag">今日のひとこと</span>
+      <p style="color:#fff;">生き物の名前をひとつ覚えるより、そのしくみを面白がれた日のほうが、ちゃんと記憶に残る気がします。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="contact-block">
+    <h2>お問い合わせ</h2>
+    <form class="contact-form" action="https://formspree.io/f/maqvpvoz" method="POST">
+      <input type="text" name="name" placeholder="お名前" required>
+      <input type="email" name="email" placeholder="メールアドレス" required>
+      <textarea name="message" rows="4" placeholder="メッセージ" required></textarea>
+      <button type="submit" class="btn btn-solid">送信する</button>
+    </form>
+  </div>
+
+  <div class="footer-meta">
+    <span>このサイトの文章・イラストは生成AIの学習データとしての利用を禁止します。</span>
+    <a href="#">Azalea Creative Room（ハブサイト）へ</a>
+  </div>
+</footer>
+
+</body>
+</html>
